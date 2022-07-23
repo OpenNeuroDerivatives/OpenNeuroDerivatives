@@ -493,3 +493,8 @@
 	url = https://github.com/OpenNeuroDerivatives/ds000212-fmriprep.git
 	datalad-id = 8e0fbf7b-2e1f-4b12-ad8a-babab8bfad72
 	datalad-url = https://github.com/OpenNeuroDerivatives/ds000212-fmriprep.git
+[submodule "ds002336-fmriprep"]
+	path = ds002336-fmriprep
+	url = https://github.com/OpenNeuroDerivatives/ds002336-fmriprep.git
+	datalad-id = cd563fb1-6a1a-4b5e-a1b5-9b65f3c8bfae
+	datalad-url = https://github.com/OpenNeuroDerivatives/ds002336-fmriprep.git
