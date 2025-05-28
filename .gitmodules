@@ -2758,3 +2758,8 @@
 	url = https://github.com/OpenNeuroDerivatives/ds004301-mriqc.git
 	datalad-id = 30880513-36de-4b31-9d15-bf1b1b98d79c
 	datalad-url = https://github.com/OpenNeuroDerivatives/ds004301-mriqc.git
+[submodule "ds004331-mriqc"]
+	path = ds004331-mriqc
+	url = https://github.com/OpenNeuroDerivatives/ds004331-mriqc.git
+	datalad-id = a1086caf-a2e3-40fb-9da0-72a5645c5ff3
+	datalad-url = https://github.com/OpenNeuroDerivatives/ds004331-mriqc.git
