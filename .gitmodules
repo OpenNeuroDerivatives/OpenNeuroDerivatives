@@ -3758,3 +3758,8 @@
 	url = https://github.com/OpenNeuroDerivatives/ds001357-fitlins.git
 	datalad-id = ebe1533e-209a-4ef2-b127-cc67698b1c3f
 	datalad-url = https://github.com/OpenNeuroDerivatives/ds001357-fitlins.git
+[submodule "ds001715-fitlins"]
+	path = ds001715-fitlins
+	url = https://github.com/OpenNeuroDerivatives/ds001715-fitlins.git
+	datalad-id = bb9a92e2-efc7-4bc0-8b2f-61f2a826827a
+	datalad-url = https://github.com/OpenNeuroDerivatives/ds001715-fitlins.git
