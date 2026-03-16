@@ -3963,3 +3963,8 @@
 	url = https://github.com/OpenNeuroDerivatives/ds000233-xcpd.git
 	datalad-id = 53a3eb51-2391-43f7-8d43-2103bbf2fe33
 	datalad-url = https://github.com/OpenNeuroDerivatives/ds000233-xcpd.git
+[submodule "ds000243-xcpd"]
+	path = ds000243-xcpd
+	url = https://github.com/OpenNeuroDerivatives/ds000243-xcpd.git
+	datalad-id = 1a595d85-52c8-461b-99d8-5959d305f2d0
+	datalad-url = https://github.com/OpenNeuroDerivatives/ds000243-xcpd.git
