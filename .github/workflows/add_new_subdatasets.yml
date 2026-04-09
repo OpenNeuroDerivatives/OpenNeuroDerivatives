@@ -1,0 +1,76 @@
+name: Install new subdatasets
+
+# Runs once a day: lists all repos in the OpenNeuroDerivatives org and
+# datalad-installs any that aren't already present as a subdataset at the
+# root of this repo. Can also be run manually from the Actions tab.
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 06:00 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    env:
+      ORG: OpenNeuroDerivatives
+      PARENT_REPO: OpenNeuroDerivatives
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout OpenNeuroDerivatives
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install git-annex and DataLad
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-annex
+          python -m pip install --upgrade pip
+          pip install datalad
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Install any missing subdatasets
+        run: |
+          set -euo pipefail
+
+          # List all (non-archived) repos in the org
+          mapfile -t repos < <(
+            gh repo list "$ORG" --limit 100000 --no-archived \
+              --json name --jq '.[].name'
+          )
+
+          installed=0
+          for name in "${repos[@]}"; do
+            # Skip the parent repo itself
+            if [ "$name" = "$PARENT_REPO" ]; then
+              continue
+            fi
+            # Skip anything already present at the root
+            if [ -e "$name" ]; then
+              echo "Skip $name (already present)"
+              continue
+            fi
+            echo "Installing $name"
+            datalad install -d . \
+              -s "https://github.com/$ORG/$name.git" \
+              "$name"
+            installed=$((installed + 1))
+          done
+          echo "Installed $installed new subdataset(s)."
+
+      - name: Push changes
+        run: |
+          if [ -n "$(git log origin/${{ github.ref_name }}..HEAD 2>/dev/null || true)" ]; then
+            git push origin HEAD:${{ github.ref_name }}
+          else
+            echo "No new commits to push."
+          fi
