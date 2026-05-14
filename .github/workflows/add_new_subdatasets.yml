@@ -1,12 +1,14 @@
 name: Install new subdatasets
 
-# Runs once a day: lists all repos in the OpenNeuroDerivatives org and
-# datalad-installs any that aren't already present as a subdataset at the
-# root of this repo. Can also be run manually from the Actions tab.
+# Runs once a day: syncs subdatasets with the OpenNeuroDerivatives org.
+#   * Installs any repo matching ^ds[0-9]{6}$ that isn't already a subdataset.
+#   * Removes any existing ds\d{6} subdataset whose source repo is no longer
+#     in the org (renamed, archived, or deleted).
+# Can also be run manually from the Actions tab.
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # 06:00 UTC daily
+    - cron: "0 6 * * *" # 06:00 UTC daily
   workflow_dispatch:
 
 permissions:
@@ -23,6 +25,7 @@ jobs:
       GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
       GIT_COMMITTER_NAME: github-actions[bot]
       GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+
     steps:
       - name: Checkout OpenNeuroDerivatives
         uses: actions/checkout@v4
@@ -39,22 +42,56 @@ jobs:
 
       - name: Configure git
         run: |
-          git config --global user.name  "github-actions[bot]"
+          git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Install any missing subdatasets
+      - name: Sync subdatasets with org
         run: |
           set -euo pipefail
 
-          # List all (non-archived) repos in the org
+          # ----- List org repos matching ds\d{6} -----
           mapfile -t repos < <(
             gh repo list "$ORG" --limit 100000 --no-archived \
-              --json name --jq '.[].name'
+              --json name --jq '.[].name | select(test("^ds[0-9]{6}$"))'
           )
 
+          # Safety check: if zero matches, bail out instead of removing
+          # every subdataset (most likely a transient API problem).
+          if [ "${#repos[@]}" -eq 0 ]; then
+            echo "::error::gh returned 0 repos matching ^ds[0-9]{6}$ - aborting."
+            exit 1
+          fi
+          echo "Found ${#repos[@]} ds\\d{6} repos in $ORG."
+
+          declare -A repo_set
+          for name in "${repos[@]}"; do
+            repo_set["$name"]=1
+          done
+
+          # ----- Remove subdatasets whose source repos no longer exist -----
+          removed=0
+          if [ -f .gitmodules ]; then
+            mapfile -t existing < <(
+              git config --file .gitmodules --get-regexp 'submodule\..*\.path' \
+                | awk '{print $2}'
+            )
+            for sub in "${existing[@]:-}"; do
+              [ -n "$sub" ] || continue
+              # Only act on top-level ds\d{6} subdatasets
+              [[ "$sub" =~ ^ds[0-9]{6}$ ]] || continue
+              if [ -z "${repo_set[$sub]:-}" ]; then
+                echo "Removing $sub (no longer in $ORG)"
+                datalad remove -d . --reckless availability "$sub"
+                removed=$((removed + 1))
+              fi
+            done
+          fi
+          echo "Removed $removed subdataset(s)."
+
+          # ----- Install new subdatasets -----
           installed=0
           for name in "${repos[@]}"; do
-            # Skip the parent repo itself
+            # Defensive: skip the parent repo itself
             if [ "$name" = "$PARENT_REPO" ]; then
               continue
             fi
