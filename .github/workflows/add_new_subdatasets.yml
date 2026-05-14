@@ -1,9 +1,10 @@
 name: Install new subdatasets
 
 # Runs once a day: syncs subdatasets with the OpenNeuroDerivatives org.
-#   * Installs any repo matching ^ds[0-9]{6}$ that isn't already a subdataset.
-#   * Removes any existing ds\d{6} subdataset whose source repo is no longer
-#     in the org (renamed, archived, or deleted).
+#   * Installs any repo whose name starts with ds[0-9]{6} that isn't already
+#     a subdataset.
+#   * Removes any existing ds[0-9]{6}* subdataset whose source repo is no
+#     longer in the org (renamed, archived, or deleted).
 # Can also be run manually from the Actions tab.
 
 on:
@@ -49,19 +50,24 @@ jobs:
         run: |
           set -euo pipefail
 
-          # ----- List org repos matching ds\d{6} -----
+          # ----- List org repos whose name starts with ds[0-9]{6} -----
+          # Use the REST API directly via `gh api --paginate` rather than
+          # `gh repo list`, because the latter falls through to the Search
+          # API which is capped at 1000 results.
           mapfile -t repos < <(
-            gh repo list "$ORG" --limit 100000 --no-archived \
-              --json name --jq '.[].name | select(test("^ds[0-9]{6}$"))'
+            gh api --paginate \
+              -H "Accept: application/vnd.github+json" \
+              "/orgs/$ORG/repos?per_page=100" \
+              --jq '.[] | select(.archived | not) | .name | select(test("^ds[0-9]{6}"))'
           )
 
           # Safety check: if zero matches, bail out instead of removing
           # every subdataset (most likely a transient API problem).
           if [ "${#repos[@]}" -eq 0 ]; then
-            echo "::error::gh returned 0 repos matching ^ds[0-9]{6}$ - aborting."
+            echo "::error::gh returned 0 repos starting with ds[0-9]{6} - aborting."
             exit 1
           fi
-          echo "Found ${#repos[@]} ds\\d{6} repos in $ORG."
+          echo "Found ${#repos[@]} ds[0-9]{6}* repos in $ORG."
 
           declare -A repo_set
           for name in "${repos[@]}"; do
@@ -77,8 +83,8 @@ jobs:
             )
             for sub in "${existing[@]:-}"; do
               [ -n "$sub" ] || continue
-              # Only act on top-level ds\d{6} subdatasets
-              [[ "$sub" =~ ^ds[0-9]{6}$ ]] || continue
+              # Only act on top-level subdatasets starting with ds[0-9]{6}
+              [[ "$sub" =~ ^ds[0-9]{6} ]] || continue
               if [ -z "${repo_set[$sub]:-}" ]; then
                 echo "Removing $sub (no longer in $ORG)"
                 datalad remove -d . --reckless availability "$sub"
