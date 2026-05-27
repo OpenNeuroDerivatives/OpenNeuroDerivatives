@@ -1,0 +1,184 @@
+cff-version: 1.2.0
+message: >-
+  If you use these derivatives, please cite this aggregation together with the
+  source OpenNeuro dataset and the BIDS App that produced the derivative (see
+  each subdataset's README.md and dataset_description.json).
+title: OpenNeuro Derivatives
+type: dataset
+url: "https://github.com/OpenNeuroDerivatives/OpenNeuroDerivatives"
+repository-code: "https://github.com/OpenNeuroDerivatives/OpenNeuroDerivatives"
+license: CC0-1.0
+authors:
+  - given-names: Joseph
+    family-names: Wexler
+    orcid: "https://orcid.org/0000-0001-6424-8740"
+  - given-names: Ross W.
+    family-names: Blair
+    orcid: "https://orcid.org/0000-0003-3007-1056"
+  - given-names: Michael
+    family-names: Demidenko
+    orcid: "https://orcid.org/0000-0001-9270-0124"
+  - given-names: Franklin
+    family-names: Feingold
+    orcid: "https://orcid.org/0000-0002-6533-2909"
+  - given-names: Nell
+    family-names: Hardcastle
+    orcid: "https://orcid.org/0000-0002-3837-0707"
+  - given-names: Jeanette
+    family-names: Mumford
+    orcid: "https://orcid.org/0000-0002-0926-3531"
+  - given-names: Russell A.
+    family-names: Poldrack
+    orcid: "https://orcid.org/0000-0001-6755-0259"
+  - given-names: Christopher J.
+    family-names: Markiewicz
+    orcid: "https://orcid.org/0000-0002-6533-164X"
+contact:
+  - given-names: Joseph
+    family-names: Wexler
+    orcid: "https://orcid.org/0000-0001-6424-8740"
+  - given-names: Christopher J.
+    family-names: Markiewicz
+    orcid: "https://orcid.org/0000-0002-6533-164X"
+references:
+  - type: grant
+    title: >-
+      OpenNeuro: An open archive for analysis and sharing of BRAIN Initiative data
+    institution:
+      name: National Institute of Mental Health
+    number: R24-MH117179
+    url: "https://reporter.nih.gov/project-details/11128603"
+    authors:
+      - given-names: Russell A.
+        family-names: Poldrack
+        orcid: "https://orcid.org/0000-0001-6755-0259"
+  - type: software
+    title: ReproMan
+    url: "https://reproman.readthedocs.io/"
+    authors:
+      - given-names: Yaroslav O.
+        family-names: Halchenko
+        orcid: "https://orcid.org/0000-0003-3456-2493"
+  - type: software
+    title: DataLad
+    doi: 10.5281/zenodo.808846
+    url: "https://www.datalad.org/"
+    authors:
+      - given-names: Michael
+        family-names: Hanke
+        orcid: "https://orcid.org/0000-0001-6398-6370"
+      - given-names: Yaroslav O.
+        family-names: Halchenko
+        orcid: "https://orcid.org/0000-0003-3456-2493"
+      - given-names: Benjamin
+        family-names: Poldrack
+        orcid: "https://orcid.org/0000-0001-7628-0801"
+      - given-names: Kyle
+        family-names: Meyer
+      - given-names: Debanjum Singh
+        family-names: Solanky
+        orcid: "https://orcid.org/0000-0002-0774-6564"
+      - given-names: Gergana
+        family-names: Alteva
+      - given-names: Jason
+        family-names: Gors
+      - given-names: Dave
+        family-names: MacFarlane
+        orcid: "https://orcid.org/0000-0001-9258-8099"
+      - given-names: Christian Olaf
+        family-names: Häusler
+        orcid: "https://orcid.org/0000-0002-0936-317X"
+      - given-names: Taylor
+        family-names: Olson
+      - given-names: Alex
+        family-names: Waite
+      - given-names: Alejandro
+        family-names: de la Vega
+        orcid: "https://orcid.org/0000-0001-9062-3778"
+      - given-names: Vanessa
+        family-names: Sochat
+        orcid: "https://orcid.org/0000-0002-4387-3819"
+      - given-names: Anisha
+        family-names: Keshavan
+        orcid: "https://orcid.org/0000-0003-3554-043X"
+      - given-names: Feilong
+        family-names: Ma
+        orcid: "https://orcid.org/0000-0002-6838-3971"
+      - given-names: Horea
+        family-names: Christian
+        orcid: "https://orcid.org/0000-0001-7037-2449"
+      - given-names: Jorrit
+        family-names: Poelen
+        orcid: "https://orcid.org/0000-0003-3138-4118"
+      - given-names: Kusti
+        family-names: Skytén
+        orcid: "https://orcid.org/0000-0001-7460-1157"
+      - given-names: Matteo
+        family-names: Visconti di Oleggio Castello
+        orcid: "https://orcid.org/0000-0001-7931-5272"
+      - given-names: Nell
+        family-names: Hardcastle
+        orcid: "https://orcid.org/0000-0002-3837-0707"
+      - given-names: Torsten
+        family-names: Stoeter
+      - given-names: Vicky C
+        family-names: Lau
+      - given-names: Christopher J.
+        family-names: Markiewicz
+        orcid: "https://orcid.org/0000-0002-6533-164X"
+      - given-names: Adina S.
+        family-names: Wagner
+        orcid: "https://orcid.org/0000-0003-2917-3450"
+      - given-names: B. Nolan
+        family-names: Nichols
+        orcid: "https://orcid.org/0000-0003-1099-3328"
+      - given-names: Mika
+        family-names: Pflüger
+        orcid: "https://orcid.org/0000-0002-7814-8916"
+      - given-names: Christian
+        family-names: Mönch
+        orcid: "https://orcid.org/0000-0002-3092-0612"
+      - given-names: Rémi
+        family-names: Gau
+        orcid: "https://orcid.org/0000-0002-1535-9767"
+      - given-names: Michał
+        family-names: Szczepanik
+        orcid: "https://orcid.org/0000-0002-4028-2087"
+      - given-names: Matthias
+        family-names: Riße
+        orcid: "https://orcid.org/0009-0006-6081-9327"
+      - given-names: Yann Georg
+        family-names: Büchau
+        orcid: "https://orcid.org/0000-0003-2472-2051"
+      - given-names: Stephan
+        family-names: Heunis
+        orcid: "https://orcid.org/0000-0003-3503-9872"
+      - given-names: Lukas
+        family-names: Schrangl
+        orcid: "https://orcid.org/0000-0002-0420-7872"
+      - given-names: Austin
+        family-names: Macdonald
+        orcid: "https://orcid.org/0000-0002-8124-807X"
+  - type: conference-paper
+    title: >-
+      Frontera: The Evolution of Leadership Computing at the National Science
+      Foundation
+    authors:
+      - family-names: Stanzione
+        given-names: Dan
+      - family-names: West
+        given-names: John
+      - family-names: Evans
+        given-names: R. Todd
+      - family-names: Minyard
+        given-names: Tommy
+      - family-names: Ghattas
+        given-names: Omar
+      - family-names: Panda
+        given-names: Dhabaleswar K.
+    collection-title: >-
+      Practice and Experience in Advanced Research Computing (PEARC '20)
+    publisher:
+      name: Association for Computing Machinery
+    year: 2020
+    doi: 10.1145/3311790.3396656
