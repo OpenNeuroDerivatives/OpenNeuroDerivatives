@@ -54,6 +54,32 @@ This work was funded by the NIH BRAIN Initiative under award
 [R24-MH117179](https://reporter.nih.gov/project-details/11128603) to
 Russell A. Poldrack.
 
+OpenNeuro participates in [ReproNim](https://repronim.org/), the NIH-NIBIB
+P41 Center for Reproducible Neuroimaging Computation
+([P41 EB019936](https://reporter.nih.gov/search/projects?text_search_type=exact_match&text_search_operator=and&projectnumbers=P41EB019936)),
+as [Collaborative Project 5 (CP5)](https://repronim.org/about/collaborators/).
+The compute orchestration and containerized environments
+used to generate these derivatives were built on ReproNim solutions:
+
+- [**ReproMan**](https://reproman.readthedocs.io/)
+  ([10.5281/zenodo.2403221](https://doi.org/10.5281/zenodo.2403221)) was
+  used to orchestrate execution of BIDS Apps on HPC clusters.
+- [**DataLad**](https://www.datalad.org/)
+  ([10.5281/zenodo.808846](https://doi.org/10.5281/zenodo.808846)) and the
+  [**`datalad-container`**](https://github.com/datalad/datalad-container)
+  extension
+  ([10.5281/zenodo.2431914](https://doi.org/10.5281/zenodo.2431914)) were
+  used to capture provenance of every derivative-producing computation
+  via `datalad run` and `datalad containers-run`; the provenance-tracking
+  components of DataLad and the `datalad-container` extension were
+  developed with ReproNim involvement.
+- The
+  [**`///repronim/containers`**](https://github.com/ReproNim/containers)
+  DataLad dataset
+  ([10.5281/zenodo.3236407](https://doi.org/10.5281/zenodo.3236407))
+  provided the versioned Singularity/Apptainer images of the BIDS Apps
+  (MRIQC, fMRIPrep, FitLins, XCP-D) used to produce the derivatives.
+
 Computing for the MRIQC, fMRIPrep, and XCP-D derivatives was performed on
 the TACC Frontera system under the Pathways allocation.
 We thank TACC for providing computational resources and support.

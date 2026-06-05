@@ -54,11 +54,82 @@ references:
         orcid: "https://orcid.org/0000-0001-6755-0259"
   - type: software
     title: ReproMan
+    doi: 10.5281/zenodo.2403221
     url: "https://reproman.readthedocs.io/"
+    repository-code: "https://github.com/ReproNim/reproman"
+    authors:
+      - given-names: Kyle
+        family-names: Meyer
+      - given-names: Yaroslav O.
+        family-names: Halchenko
+        orcid: "https://orcid.org/0000-0003-3456-2493"
+      - given-names: Matt
+        family-names: Travers
+      - given-names: Christian
+        family-names: Haselgrove
+      - given-names: Austin
+        family-names: Macdonald
+        orcid: "https://orcid.org/0000-0002-8124-807X"
+      - given-names: Robert W.
+        family-names: Buccigrossi
+      - given-names: Joseph
+        family-names: Wexler
+        orcid: "https://orcid.org/0000-0001-6424-8740"
+  - type: data
+    title: >-
+      ReproNim/containers - containerized environments for reproducible
+      neuroimaging
+    doi: 10.5281/zenodo.3236407
+    url: "https://github.com/ReproNim/containers"
+    repository-code: "https://github.com/ReproNim/containers"
     authors:
       - given-names: Yaroslav O.
         family-names: Halchenko
         orcid: "https://orcid.org/0000-0003-3456-2493"
+      - given-names: Christian
+        family-names: Haselgrove
+      - given-names: Matt
+        family-names: Travers
+      - given-names: John T.
+        family-names: Wodder II
+      - given-names: Austin
+        family-names: Macdonald
+        orcid: "https://orcid.org/0000-0002-8124-807X"
+  - type: grant
+    title: >-
+      ReproNim: A Center for Reproducible Neuroimaging Computation
+    institution:
+      name: National Institute of Biomedical Imaging and Bioengineering
+    number: P41 EB019936
+    url: "https://reporter.nih.gov/search/projects?text_search_type=exact_match&text_search_operator=and&projectnumbers=P41EB019936"
+    notes: >-
+      OpenNeuro participates in ReproNim as Collaborative Project 5 (CP5).
+      ReproMan and the ///repronim/containers DataLad dataset were used
+      extensively for orchestrating compute and providing reproducible
+      containerized environments to generate these derivatives. DataLad's
+      `datalad run` and the `datalad-container` extension's
+      `datalad containers-run` were used to capture provenance of every
+      computation; these provenance-tracking components were developed
+      with ReproNim involvement.
+    authors:
+      - given-names: David N.
+        family-names: Kennedy
+        orcid: "https://orcid.org/0000-0002-9377-0797"
+      - given-names: Maryann E.
+        family-names: Martone
+        orcid: "https://orcid.org/0000-0002-8406-3871"
+      - given-names: Jeffrey S.
+        family-names: Grethe
+        orcid: "https://orcid.org/0000-0001-5212-7052"
+      - given-names: Satrajit S.
+        family-names: Ghosh
+        orcid: "https://orcid.org/0000-0002-5312-6729"
+      - given-names: Yaroslav O.
+        family-names: Halchenko
+        orcid: "https://orcid.org/0000-0003-3456-2493"
+      - given-names: Jean-Baptiste
+        family-names: Poline
+        orcid: "https://orcid.org/0000-0002-9794-749X"
   - type: software
     title: DataLad
     doi: 10.5281/zenodo.808846
@@ -159,6 +230,48 @@ references:
       - given-names: Austin
         family-names: Macdonald
         orcid: "https://orcid.org/0000-0002-8124-807X"
+  - type: software
+    title: datalad-container
+    doi: 10.5281/zenodo.2431914
+    url: "https://github.com/datalad/datalad-container"
+    repository-code: "https://github.com/datalad/datalad-container"
+    notes: >-
+      DataLad extension providing `datalad containers-run` for recording
+      provenance of computations run inside Singularity/Apptainer/Docker
+      images; developed with ReproNim involvement.
+    authors:
+      - given-names: Yaroslav O.
+        family-names: Halchenko
+        orcid: "https://orcid.org/0000-0003-3456-2493"
+      - given-names: Michael
+        family-names: Hanke
+        orcid: "https://orcid.org/0000-0001-6398-6370"
+      - given-names: Kyle
+        family-names: Meyer
+      - given-names: Benjamin
+        family-names: Poldrack
+        orcid: "https://orcid.org/0000-0001-7628-0801"
+      - given-names: Yann Georg
+        family-names: Büchau
+        orcid: "https://orcid.org/0000-0003-2472-2051"
+      - given-names: Adina S.
+        family-names: Wagner
+        orcid: "https://orcid.org/0000-0003-2917-3450"
+      - given-names: Austin
+        family-names: Macdonald
+        orcid: "https://orcid.org/0000-0002-8124-807X"
+      - given-names: John T.
+        family-names: Wodder II
+      - given-names: Laura
+        family-names: Waite
+      - given-names: Stephan
+        family-names: Heunis
+        orcid: "https://orcid.org/0000-0003-3503-9872"
+      - given-names: Christian
+        family-names: Mönch
+        orcid: "https://orcid.org/0000-0002-3092-0612"
+      - given-names: Morris
+        family-names: Haid
   - type: conference-paper
     title: >-
       Frontera: The Evolution of Leadership Computing at the National Science
