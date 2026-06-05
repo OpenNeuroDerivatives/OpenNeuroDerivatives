@@ -24,6 +24,9 @@ authors:
   - given-names: Nell
     family-names: Hardcastle
     orcid: "https://orcid.org/0000-0002-3837-0707"
+  - given-names: Felix
+    family-names: Hoffstaedter
+    orcid: "https://orcid.org/0000-0001-7163-3110"
   - given-names: Jeanette
     family-names: Mumford
     orcid: "https://orcid.org/0000-0002-0926-3531"
@@ -159,6 +162,35 @@ references:
       - given-names: Austin
         family-names: Macdonald
         orcid: "https://orcid.org/0000-0002-8124-807X"
+  - type: software
+    title: FAIRly big: A framework for computationally reproducible processing of large-scale data
+    doi: 10.1038/s41597-022-01163-2
+    url: "https://www.github.com/psychoinformatics-de/fairly-big-processing-workflow"
+    authors:
+      - given-names: Adina S.
+        family-names: Wagner
+        orcid: "https://orcid.org/0000-0003-2917-3450"
+      - given-names: Laura
+        family-names: Waite
+        orcid: "https://orcid.org/0000-0003-2213-7465"
+      - given-names: Małgorzata
+        family-names: Wierzba
+        orcid: "https://orcid.org/0000-0003-0820-2662"
+      - given-names: Felix
+        family-names: Hoffstaedter
+        orcid: "https://orcid.org/0000-0001-7163-3110"
+      - given-names: Alexander 
+        family-names: Waite
+        orcid: "https://orcid.org/0000-0002-8402-6173"
+      - given-names: Benjamin
+        family-names: Poldrack
+        orcid: "https://orcid.org/0000-0001-7628-0801"
+      - given-names: Simon
+        family-names: Eickhoff
+        orcid: "https://orcid.org/0000-0001-6363-2759"
+      - given-names: Michael
+        family-names: Hanke
+        orcid: "https://orcid.org/0000-0001-6398-6370"
   - type: conference-paper
     title: >-
       Frontera: The Evolution of Leadership Computing at the National Science
